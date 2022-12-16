@@ -1,5 +1,5 @@
 export const allPostsQuery = () => {
-  const query = `*[_type == "post"] | order(_createdAt desc){
+  return `*[_type == "post"] | order(_createdAt desc){
     _id,
      caption,
        video{
@@ -11,7 +11,7 @@ export const allPostsQuery = () => {
       userId,
       postedBy->{
         _id,
-        userName,
+        name,
         image
       },
     likes,
@@ -20,17 +20,15 @@ export const allPostsQuery = () => {
       _key,
       postedBy->{
       _id,
-      userName,
+      name,
       image
     },
     }
   }`;
-
-  return query;
 };
 
 export const postDetailQuery = (postId: string | string[]) => {
-  const query = `*[_type == "post" && _id == '${postId}']{
+  return `*[_type == "post" && _id == '${postId}']{
     _id,
      caption,
        video{
@@ -42,7 +40,7 @@ export const postDetailQuery = (postId: string | string[]) => {
       userId,
     postedBy->{
       _id,
-      userName,
+      name,
       image
     },
      likes,
@@ -55,11 +53,10 @@ export const postDetailQuery = (postId: string | string[]) => {
     },
     }
   }`;
-  return query;
 };
 
 export const searchPostsQuery = (searchTerm: string | string[]) => {
-  const query = `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
+  return `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
     _id,
      caption,
        video{
@@ -71,7 +68,7 @@ export const searchPostsQuery = (searchTerm: string | string[]) => {
       userId,
     postedBy->{
       _id,
-      userName,
+      name,
       image
     },
 likes,
@@ -80,28 +77,23 @@ likes,
       _key,
       postedBy->{
       _id,
-      userName,
+      name,
       image
     },
     }
   }`;
-  return query;
 };
 
 export const singleUserQuery = (userId: string | string[]) => {
-  const query = `*[_type == "user" && _id == '${userId}']`;
-
-  return query;
+  return `*[_type == "user" && _id == '${userId}']`;
 };
 
 export const allUsersQuery = () => {
-  const query = `*[_type == "user"]`;
-
-  return query;
+  return `*[_type == "user"]`;
 };
 
 export const userCreatedPostsQuery = (userId: string | string[]) => {
-  const query = `*[ _type == 'post' && userId == '${userId}'] | order(_createdAt desc){
+  return `*[ _type == 'post' && userId == '${userId}'] | order(_createdAt desc){
     _id,
      caption,
        video{
@@ -113,7 +105,7 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
       userId,
     postedBy->{
       _id,
-      userName,
+      name,
       image
     },
  likes,
@@ -123,17 +115,15 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
       _key,
       postedBy->{
       _id,
-      userName,
+      name,
       image
     },
     }
   }`;
-
-  return query;
 };
 
 export const userLikedPostsQuery = (userId: string | string[]) => {
-  const query = `*[_type == 'post' && '${userId}' in likes[]._ref ] | order(_createdAt desc) {
+  return `*[_type == 'post' && '${userId}' in likes[]._ref ] | order(_createdAt desc) {
     _id,
      caption,
        video{
@@ -145,7 +135,7 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
       userId,
     postedBy->{
       _id,
-      userName,
+      name,
       image
     },
  likes,
@@ -155,17 +145,15 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
       _key,
       postedBy->{
       _id,
-      userName,
+      name,
       image
     },
     }
   }`;
-
-  return query;
 };
 
 export const topicPostsQuery = (topic: string | string[]) => {
-  const query = `*[_type == "post" && topic match '${topic}*'] {
+  return `*[_type == "post" && topic match '${topic}*'] {
     _id,
      caption,
        video{
@@ -177,7 +165,7 @@ export const topicPostsQuery = (topic: string | string[]) => {
       userId,
     postedBy->{
       _id,
-      userName,
+      name,
       image
     },
  likes,
@@ -187,11 +175,9 @@ export const topicPostsQuery = (topic: string | string[]) => {
       _key,
       postedBy->{
       _id,
-      userName,
+      name,
       image
     },
     }
   }`;
-
-  return query;
 };

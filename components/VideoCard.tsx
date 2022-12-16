@@ -22,7 +22,7 @@ export default function VideoCard({post} : {post : Video}){
                         <Link href="/">
                             <div>
                                 <p>
-                                    {post.postedBy.userName} {``}
+                                    {post.postedBy.name} {``}
                                     <GoVerified className="text-blue-400-text-md"/>
                                 </p>
                             </div>
