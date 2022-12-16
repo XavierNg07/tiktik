@@ -18,6 +18,16 @@ export default function VideoCard({post} : {post : Video}){
                             </>
                         </Link>
                     </div>
+                    <div>
+                        <Link href="/">
+                            <div>
+                                <p>
+                                    {post.postedBy.userName} {``}
+                                    <GoVerified className="text-blue-400-text-md"/>
+                                </p>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
