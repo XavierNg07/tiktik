@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Video} from '../types.dev';
+import {Video} from '../types';
 import Image from 'next/image';
 import Link from 'next/link';
 import {HiVolumeUp, HiVolumeOff} from 'react-icons/hi';

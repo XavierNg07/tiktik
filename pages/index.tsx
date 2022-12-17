@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Video} from '../types.dev';
+import {Video} from '../types';
 import NoResults from '../components/NoResults';
 import VideoCard from '../components/VideoCard';
 
