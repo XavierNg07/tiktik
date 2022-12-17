@@ -47,7 +47,7 @@ export default function Navbar(){
                     </div>
                 ) : <GoogleLogin
                     onSuccess={(credentialResponse) => {createOrGetUser(credentialResponse, addUser)}}
-                    onError={() =>{console.log('error')}}/>}
+                    onError={() => console.log('Error GoogleLogin')}/>}
             </div>
         </div>
     );
