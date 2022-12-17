@@ -27,8 +27,8 @@ export default function VideoCard({post} : {post : Video}){
                     <div className="md:w-16 md:h-16 w-10 h-10">
                         <Link href="/">
                             <>
-                                <Image width={62} height={62} className="rounded-full" src={post.postedBy.image}
-                                       alt="profile photo" layout="responsive"/>
+                                <Image width={62} height={62} className="rounded-full cursor-pointer" src={post.postedBy.image}
+                                       alt="profile photo" layout='responsive'/>
                             </>
                         </Link>
                     </div>
@@ -36,7 +36,7 @@ export default function VideoCard({post} : {post : Video}){
                         <Link href="/">
                             <div className="flex items-center gap-2">
                                 <p className="flex gap-2 items-center md:text-md font-bold text-primary">
-                                    {post.postedBy.name} {``}
+                                    {post.postedBy.name} {' '}
                                     <GoVerified className="text-blue-400 text-md"/>
                                 </p>
                                 <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">
