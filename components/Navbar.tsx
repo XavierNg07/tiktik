@@ -7,6 +7,7 @@ import {AiOutlineLogout} from 'react-icons/ai';
 import {BiSearch} from 'react-icons/bi';
 import {IoMdAdd} from 'react-icons/io';
 import Logo from '../utils/tiktik-logo.png';
+import createOrGetUser from '../utils';
 
 export default function Navbar(){
     const user = false;
@@ -26,7 +27,7 @@ export default function Navbar(){
                 {user ? (
                     <div>Logged In</div>
                 ) : <GoogleLogin
-                    onSuccess={(credentialResponse) =>{console.log(credentialResponse)}}
+                    onSuccess={(credentialResponse) => {createOrGetUser(credentialResponse)}}
                     onError={() =>{console.log('error')}}/>}
             </div>
         </div>

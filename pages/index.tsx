@@ -13,7 +13,7 @@ export default function Home({videos} : {videos : Video[]}) {
 }
 
 export const getServerSideProps = async() => {
-  const {data} = await axios.get(`http://localhost:3000/api/post`);
+  const {data} = await axios.get(`http://localhost:3000/api`);
   return {
     props: {
       videos: data
