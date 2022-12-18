@@ -25,10 +25,10 @@ export default function Detail({postDetails} : {postDetails : Video}){
     }
 
     useEffect(() => {
-        if (videoRef?.current){
+        if (post && videoRef?.current){
             videoRef.current.muted = isMuted;
         }
-    }, [isMuted])
+    }, [post, isMuted])
 
     if (!post) return null;
 
