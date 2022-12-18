@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Video} from '../types';
 import NoResults from '../components/NoResults';
 import VideoCard from '../components/VideoCard';
-import {BASE_URL} from "../utils";
+import {BASE_URL} from '../utils';
 
 export default function Home({videos} : {videos : Video[]}) {
   return (

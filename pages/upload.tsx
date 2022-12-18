@@ -7,7 +7,7 @@ import useAuthStore from '../store/authStore';
 import {client} from '../utils/client';
 import {SanityAssetDocument} from '@sanity/client';
 import {topics} from '../utils/constants';
-import {BASE_URL} from "../utils";
+import {BASE_URL} from '../utils';
 
 export default function Upload(){
     const [isUploading, setIsUploading] = useState(false);
