@@ -10,8 +10,13 @@ import {topics} from '../utils/constants';
 
 export default function Upload(){
     const [isUploading, setIsUploading] = useState(false);
-    const [videoAsset, setVideoAsset] = useState<SanityAssetDocument>();
+    const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
     const [isWrongFileType, setIsWrongFileType] = useState(false);
+    const [caption, setCaption] = useState('');
+    const [category, setCategory] = useState(topics[0].name);
+    const [isSaving, setIsSaving] = useState(false);
+    const {userProfile} = useAuthStore();
+    const router = useRouter();
     async function uploadVideo(e : any){
         const selectedFile = e.target.files[0];
         const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
@@ -27,6 +32,31 @@ export default function Upload(){
         } else {
             setIsUploading(false);
             setIsWrongFileType(true);
+        }
+    }
+
+    async function postVideo(){
+        if (caption && videoAsset?._id && category){
+            setIsSaving(true);
+            const document = {
+                _type: "post",
+                caption,
+                video: {
+                    _type: "file",
+                    asset: {
+                        _type: "reference",
+                        _ref: videoAsset._id
+                    }
+                },
+                userId: userProfile?._id,
+                postedBy: {
+                    _type: "postedBy",
+                    _ref: userProfile?._id
+                },
+                topic: category
+            }
+            await axios.post("http://localhost:3000/api", document);
+            await router.push('/');
         }
     }
 
@@ -84,11 +114,12 @@ export default function Upload(){
               </div>
               <div className={"flex flex-col gap-3 pb-10"}>
                   <label className={"text-md font-medium"}>Caption</label>
-                  <input type={"text"} value={""}
-                         onChange={() => {}}
+                  <input type={"text"} value={caption}
+                         onChange={(e) => {setCaption(e.target.value)}}
                          className={"rounded outline-none text-md border-2 border-gray-200 p-2"}/>
                   <label className={"text-md font-medium"}>Choose a Category</label>
-                  <select className={"outline-none border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer"} onChange={() => {}}>
+                  <select className={"outline-none border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer"}
+                          onChange={(e) => {setCategory(e.target.value)}}>
                       {topics.map(topic => (
                           <option key={topic.name} value={topic.name}
                                   className={"outline-none capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"}>
@@ -101,7 +132,7 @@ export default function Upload(){
                               type={"button"} className={"border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"}>
                           Discard
                       </button>
-                      <button onClick={() => {}}
+                      <button onClick={postVideo}
                               type={"button"} className={"bg-[#F51997] text-white border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"}>
                           Post
                       </button>
