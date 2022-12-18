@@ -10,6 +10,8 @@ import axios from 'axios';
 import {BASE_URL} from '../../utils';
 import {Video} from '../../types';
 import useAuthStore from '../../store/authStore';
+import LikeButton from '../../components/LikeButton';
+import Comments from '../../components/Comments';
 
 export default function Detail({postDetails} : {postDetails : Video}){
     const [post, setPost] = useState(postDetails);
@@ -33,6 +35,17 @@ export default function Detail({postDetails} : {postDetails : Video}){
             videoRef.current.muted = isMuted;
         }
     }, [post, isMuted])
+
+    async function handleLike(like : boolean){
+        if (userProfile){
+            const {data} = await axios.put(`${BASE_URL}/api/like`, {
+                userId : userProfile._id,
+                postId: post._id,
+                like
+            });
+            setPost({...post, likes: data.likes})
+        }
+    }
 
     if (!post) return null;
 
@@ -96,7 +109,9 @@ export default function Detail({postDetails} : {postDetails : Video}){
                     <p className={"px-10 text-lg text-gray-600"}>{post.caption}</p>
                     <div className={"mt-10 px-10"}>
                         {userProfile && (
-                            <LikeButton/>
+                            <LikeButton handleLike={() => handleLike(true)}
+                                        handleDislike={() => handleLike(false)}
+                                        likes={post.likes}/>
                         )}
                     </div>
                     <Comments/>
