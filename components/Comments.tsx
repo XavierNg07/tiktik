@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, Fragment} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {GoVerified} from 'react-icons/go';
@@ -23,13 +23,15 @@ interface IComment{
 
 export default function Comments({comment, setComment, addComment, comments, isPosting} : IProps){
     const {userProfile, allUsers} = useAuthStore();
+    console.log(comments[0]);
+    console.log(allUsers[0]._id);
 
     return (
         <div className={"border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]"}>
             <div className={"overflow-scroll lg:h-[475px]"}>
                 {comments?.length ? (
                     comments.map((comment, index) => (
-                        <>
+                        <Fragment key={index}>
                             {allUsers.map((user : IUser) => (
                                 user._id === comment.postedBy._ref && (
                                     <div className={"p-2 items-center"} key={index}>
@@ -55,7 +57,7 @@ export default function Comments({comment, setComment, addComment, comments, isP
                                         </div>
                                     </div>))
                             )}
-                        </>
+                        </Fragment>
                     ))
                 ) : (
                     <NoResults text={"No comments yet!"}/>
