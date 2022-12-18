@@ -13,6 +13,7 @@ export default function Detail({postDetails} : {postDetails : Video}){
     const [post, setPost] = useState(postDetails);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
 
     function playVid(){
         if (isPlaying){
@@ -23,7 +24,14 @@ export default function Detail({postDetails} : {postDetails : Video}){
         }
     }
 
+    useEffect(() => {
+        if (videoRef?.current){
+            videoRef.current.muted = isMuted;
+        }
+    }, [isMuted])
+
     if (!post) return null;
+
     return (
         <div className={"flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap"}>
             <div className={"relative flex-2 w-[1000px] lg:w-9/12 flex justify-center " +
@@ -47,6 +55,13 @@ export default function Detail({postDetails} : {postDetails : Video}){
                             </button>
                         )}
                     </div>
+                </div>
+                <div className={"absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer"}>
+                    {isMuted ? (
+                        <button onClick={() => {setIsMuted(false)}}><HiVolumeOff className="text-white text-2xl lg:text-4xl"/></button>
+                    ) : (
+                        <button onClick={() => {setIsMuted(true)}}><HiVolumeUp className="text-white text-2xl lg:text-4xl"/></button>
+                    )}
                 </div>
             </div>
         </div>
