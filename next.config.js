@@ -5,7 +5,7 @@ const withTM = require('next-transpile-modules')(['react-icons']);
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['www.pngmart.com', 'lh3.googleusercontent.com'],
+    domains: ['lh3.googleusercontent.com'],
   }
 }
 

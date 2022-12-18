@@ -20,6 +20,8 @@ export default function Detail({postDetails} : {postDetails : Video}){
     const [isMuted, setIsMuted] = useState(false);
     const router = useRouter();
     const {userProfile} = useAuthStore();
+    const [comment, setComment] = useState("");
+    const [isPosting, setIsPosting] = useState(false);
 
     function playVid(){
         if (isPlaying){
@@ -44,6 +46,20 @@ export default function Detail({postDetails} : {postDetails : Video}){
                 like
             });
             setPost({...post, likes: data.likes})
+        }
+    }
+
+    async function addComment(e : any){
+        e.preventDefault();
+        if (userProfile && comment){
+            setIsPosting(true);
+            const {data} = await axios.put(`${BASE_URL}/api/${post._id}`, {
+                userId: userProfile._id,
+                comment
+            });
+            setPost({...post, comments : data.comments});
+            setComment("");
+            setIsPosting(false);
         }
     }
 
@@ -114,7 +130,11 @@ export default function Detail({postDetails} : {postDetails : Video}){
                                         likes={post.likes}/>
                         )}
                     </div>
-                    <Comments/>
+                    <Comments comment={comment}
+                              setComment={setComment}
+                              addComment={addComment}
+                              comments={post.comments}
+                              isPosting={isPosting}/>
                 </div>
             </div>
         </div>
