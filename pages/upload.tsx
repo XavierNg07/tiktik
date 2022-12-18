@@ -7,6 +7,7 @@ import useAuthStore from '../store/authStore';
 import {client} from '../utils/client';
 import {SanityAssetDocument} from '@sanity/client';
 import {topics} from '../utils/constants';
+import {BASE_URL} from "../utils";
 
 export default function Upload(){
     const [isUploading, setIsUploading] = useState(false);
@@ -55,7 +56,7 @@ export default function Upload(){
                 },
                 topic: category
             }
-            await axios.post("http://localhost:3000/api", document);
+            await axios.post(`${BASE_URL}/api`, document);
             await router.push('/');
         }
     }
