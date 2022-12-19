@@ -34,6 +34,11 @@ export default function Upload(){
         }
     }
 
+    async function handleDiscard(){
+        setVideoAsset(undefined);
+        setCaption('');
+    }
+
     async function postVideo(){
         if (caption && videoAsset?._id && category){
             const document = {
@@ -126,7 +131,7 @@ export default function Upload(){
                       ))}
                   </select>
                   <div className={"flex gap-6 mt-10"}>
-                      <button onClick={() => {}}
+                      <button onClick={handleDiscard}
                               type={"button"} className={"border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"}>
                           Discard
                       </button>
