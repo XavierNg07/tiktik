@@ -36,7 +36,7 @@ export default function Search({videos} : {videos : Video[]}){
                     {matchedAccounts.length ? (
                         matchedAccounts.map((user, index) => (
                             <Link href={`/profile/${user._id}`} key={index}>
-                                <div className={"flex items-start gap-3"}>
+                                <div className={"flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200"}>
                                     <div>
                                         <Image src={user.image} width={50} height={50} className={"rounded-full"} alt={"user-profile"}/>
                                     </div>
