@@ -21,7 +21,7 @@ export default function Profile({data} : IProps){
 }
 
 export async function getServerSideProps({params : {id}} : {params : {id : string}}){
-    const response = await axios.get(`${BASE_URL}/profile/${id}`);
+    const response = await axios.get(`${BASE_URL}/api/profile/${id}`);
     return {
         props : {data : response.data}
     }

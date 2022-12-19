@@ -39,7 +39,7 @@ export default function VideoCard({post} : {post : Video}){
                         </Link>
                     </div>
                     <div>
-                        <Link href="/">
+                        <Link href={`/profile/${post.postedBy._id}`}>
                             <div className="flex items-center gap-2">
                                 <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                                     {post.postedBy.name} {' '}
