@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 export default function Sidebar(){
     const [showSidebar, setShowSideBar] = useState(true);
-    const normalLink = "flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded";
+    const normalLink = "flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#00C49A] rounded";
 
     return (
       <>

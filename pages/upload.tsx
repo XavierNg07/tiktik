@@ -99,7 +99,7 @@ export default function Upload(){
                                               Up to 10 minutes <br/>
                                               Less than 2GB
                                           </p>
-                                          <p className={"bg-[#F51997] text-center mt-10 rounded text-white text-md " +
+                                          <p className={"bg-[#00C49A] text-center mt-10 rounded text-white text-md " +
                                               "font-medium p-2 w-52 outline-none"}>
                                               Select File
                                           </p>
@@ -136,7 +136,7 @@ export default function Upload(){
                           Discard
                       </button>
                       <button onClick={postVideo}
-                              type={"button"} className={"bg-[#F51997] text-white border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"}>
+                              type={"button"} className={"bg-[#00C49A] text-white border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"}>
                           Post
                       </button>
                   </div>
