@@ -37,6 +37,7 @@ export default function Upload(){
     async function handleDiscard(){
         setVideoAsset(undefined);
         setCaption('');
+        router.push('/');
     }
 
     async function postVideo(){
