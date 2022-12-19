@@ -38,8 +38,7 @@ export default function Search({videos} : {videos : Video[]}){
                             <Link href={`/profile/${user._id}`} key={index}>
                                 <div className={"flex items-start gap-3"}>
                                     <div>
-                                        <Image src={user.image} width={50} height={50}
-                                               className={"rounded-full"} alt={"user-profile"} layout={"responsive"}/>
+                                        <Image src={user.image} width={50} height={50} className={"rounded-full"} alt={"user-profile"}/>
                                     </div>
                                     <div className={"hidden xl:block"}>
                                         <p className={"flex gap-1 items-center text-md font-bold text-primary lowercase"}>

@@ -104,7 +104,7 @@ export default function Detail({postDetails} : {postDetails : Video}){
                             <Link href="/">
                                 <>
                                     <Image width={62} height={62} className="rounded-full cursor-pointer" src={post.postedBy.image}
-                                           alt="profile photo" layout='responsive'/>
+                                           alt="profile photo"/>
                                 </>
                             </Link>
                         </div>

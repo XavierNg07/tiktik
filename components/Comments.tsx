@@ -37,7 +37,7 @@ export default function Comments({comment, setComment, addComment, comments, isP
                                             <div className={"flex items-start gap-3"}>
                                                 <div className={"w-8 h-8"}>
                                                     <Image src={user.image} width={34} height={34}
-                                                           className={"rounded-full"} alt={"user-profile"} layout={"responsive"}/>
+                                                           className={"rounded-full"} alt={"user-profile"}/>
                                                 </div>
                                                 <div className={"hidden xl:block"}>
                                                     <p className={"flex gap-1 items-center text-md font-bold text-primary lowercase"}>

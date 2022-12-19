@@ -34,7 +34,7 @@ export default function VideoCard({post} : {post : Video}){
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <>
                                 <Image width={62} height={62} className="rounded-full cursor-pointer" src={post.postedBy.image}
-                                       alt="profile photo" layout='responsive'/>
+                                       alt="profile photo"/>
                             </>
                         </Link>
                     </div>
