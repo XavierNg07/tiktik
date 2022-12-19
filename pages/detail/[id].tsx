@@ -109,7 +109,7 @@ export default function Detail({postDetails} : {postDetails : Video}){
                             </Link>
                         </div>
                         <div>
-                            <Link href="/">
+                            <Link href={`/profile/${userProfile?._id}`}>
                                 <div className="mt-3 flex flex-col gap-2">
                                     <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                                         {post.postedBy.name} {' '}
