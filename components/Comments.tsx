@@ -61,7 +61,7 @@ export default function Comments({comment, setComment, addComment, comments, isP
                     <NoResults text={"No comments yet!"}/>
                 )}
             </div>
-            {userProfile && (
+            {userProfile ? (
                 <div className={"absolute bottom-0 left-0 pb-6 px-2 md:px-10"}>
                     <form onSubmit={addComment} className={"flex gap-4"}>
                         <input value={comment} onChange={e => setComment(e.target.value)} placeholder={"Add a comment..."}
@@ -73,6 +73,8 @@ export default function Comments({comment, setComment, addComment, comments, isP
                         </button>
                     </form>
                 </div>
+            ) : (
+                <div className={"absolute bottom-0 left-0 pb-6 px-2 md:px-10 items-center"}>Login to comment</div>
             )}
         </div>
     )
