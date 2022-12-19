@@ -33,7 +33,7 @@ export default function VideoCard({post} : {post : Video}){
                     <div className="md:w-16 md:h-16 w-10 h-10">
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <>
-                                <Image width={62} height={62} className="rounded-full cursor-pointer" src={post.postedBy.image}
+                                <Image width={50} height={50} className="rounded-full cursor-pointer" src={post.postedBy.image}
                                        alt="profile photo"/>
                             </>
                         </Link>

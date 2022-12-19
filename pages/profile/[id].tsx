@@ -33,7 +33,7 @@ export default function Profile({data} : IProps){
         <div className={"w-full"}>
             <div className={"flex gap-6 md:gap-10 mb-4 bg-white w-full"}>
                 <div className={"w-16 h-16 md:w-32 md:h-32"}>
-                    <Image src={user.image} width={120} height={120}
+                    <Image src={user.image} width={107} height={107}
                            className={"rounded-full"} alt={"user-profile"}/>
                 </div>
                 <div className={"flex flex-col justify-center"}>
