@@ -6,13 +6,18 @@ import {Video} from '../../types';
 import {useRouter} from 'next/router';
 import NoResults from "../../components/NoResults";
 import VideoCard from "../../components/VideoCard";
+import Image from "next/image";
+import {GoVerified} from "react-icons/go";
+import Link from "next/link";
 
 
 export default function Search({videos} : {videos : Video[]}){
     const [accountsOrVideos, setAccountsOrVideos] = useState(true);
     const accounts = accountsOrVideos ? "border-b-2 border-black" : "text-gray-400";
     const postedVideos = !accountsOrVideos? "border-b-2 border-black" : "text-gray-400";
-    const {term} = useRouter().query;
+    const {term} : any = useRouter().query;
+    const {allUsers} = useAuthStore();
+    const matchedAccounts = allUsers.filter(user => user.name.toLowerCase().includes(term.toLowerCase()));
 
     return (
         <div className={"w-full"}>
@@ -27,7 +32,29 @@ export default function Search({videos} : {videos : Video[]}){
                 </p>
             </div>
             {accountsOrVideos ? (
-                <div>ACCOUNTS</div>
+                <div className={"md:mt-16"}>
+                    {matchedAccounts.length ? (
+                        matchedAccounts.map((user, index) => (
+                            <Link href={`/profile/${user._id}`} key={index}>
+                                <div className={"flex items-start gap-3"}>
+                                    <div>
+                                        <Image src={user.image} width={50} height={50}
+                                               className={"rounded-full"} alt={"user-profile"} layout={"responsive"}/>
+                                    </div>
+                                    <div className={"hidden xl:block"}>
+                                        <p className={"flex gap-1 items-center text-md font-bold text-primary lowercase"}>
+                                            {user.name.replaceAll(" ", '')}
+                                            <GoVerified className={"text-blue-400"}/>
+                                        </p>
+                                        <p className={"capitalize text-gray-400 text-xs"}>
+                                            {user.name}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))
+                    ) : (<NoResults text={`No account results for ${term}`}/>)}
+                </div>
             ) : (
                 <div className={"md:mt-16 flex flex-wrap gap-6 md:justify-start"}>
                     {videos.length ? (
