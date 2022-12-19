@@ -25,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
             }])
             .commit()
+        // console.log(data.comments);
         res.status(200).json(data);
     }
 }

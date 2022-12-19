@@ -18,12 +18,12 @@ interface IComment{
     comment: string,
     length?: number,
     _key: string,
-    postedBy: {_id: string}
+    postedBy: {_id: string, _ref: string}
 }
 
 export default function Comments({comment, setComment, addComment, comments, isPosting} : IProps){
     const {userProfile, allUsers} = useAuthStore();
-
+    // console.log(comments);
     return (
         <div className={"border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]"}>
             <div className={"overflow-scroll lg:h-[475px]"}>
@@ -31,7 +31,7 @@ export default function Comments({comment, setComment, addComment, comments, isP
                     comments.map((comment, index) => (
                         <Fragment key={index}>
                             {allUsers.map((user : IUser) => (
-                                user._id === comment.postedBy._id && (
+                                user._id === (comment.postedBy._id || comment.postedBy._ref) && (
                                     <div className={"p-2 items-center"} key={index}>
                                         <Link href={`/profile/${user._id}`}>
                                             <div className={"flex items-start gap-3"}>
