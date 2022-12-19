@@ -19,7 +19,7 @@ export async function getServerSideProps({query : {topic}} : {query : {topic : s
   if (topic){
     response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
   } else {
-    response = await axios.get(`${BASE_URL}/api`);
+    response = await axios.get(`${BASE_URL}/api/post`);
   }
   return {
     props: {

@@ -12,7 +12,7 @@ export default function LikeButton({handleLike, handleDislike, likes} : IProps){
     const {userProfile} = useAuthStore();
     const filterLikes = likes?.filter(like => like._ref === userProfile?._id)
     useEffect(() => {
-        if (filterLikes.length > 0){
+        if (filterLikes?.length){
             setAlreadyLiked(true);
         } else {
             setAlreadyLiked(false);

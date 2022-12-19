@@ -53,7 +53,7 @@ export default function Detail({postDetails} : {postDetails : Video}){
         e.preventDefault();
         if (userProfile && comment){
             setIsPosting(true);
-            const {data} = await axios.put(`${BASE_URL}/api/${post._id}`, {
+            const {data} = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
                 userId: userProfile._id,
                 comment
             });
@@ -142,7 +142,7 @@ export default function Detail({postDetails} : {postDetails : Video}){
 }
 
 export async function getServerSideProps({params : {id}} : {params : {id:string}}){
-    const {data} = await axios.get(`${BASE_URL}/api/${id}`);
+    const {data} = await axios.get(`${BASE_URL}/api/post/${id}`);
     return {
         props : {postDetails : data}
     }
