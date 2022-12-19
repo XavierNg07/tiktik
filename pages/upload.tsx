@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useRouter} from 'next/router';
 import {FaCloudUploadAlt} from 'react-icons/fa';
-import {MdDelete} from 'react-icons/md';
 import axios from 'axios';
 import useAuthStore from '../store/authStore';
 import {client} from '../utils/client';
@@ -15,7 +14,6 @@ export default function Upload(){
     const [isWrongFileType, setIsWrongFileType] = useState(false);
     const [caption, setCaption] = useState('');
     const [category, setCategory] = useState(topics[0].name);
-    const [isSaving, setIsSaving] = useState(false);
     const {userProfile} = useAuthStore();
     const router = useRouter();
     async function uploadVideo(e : any){
@@ -38,7 +36,6 @@ export default function Upload(){
 
     async function postVideo(){
         if (caption && videoAsset?._id && category){
-            setIsSaving(true);
             const document = {
                 _type: "post",
                 caption,

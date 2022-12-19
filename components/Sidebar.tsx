@@ -1,9 +1,5 @@
 import React, {useState} from 'react';
-import {NextPage} from 'next';
-import {useRouter} from 'next/router';
 import Link from 'next/link';
-import {GoogleOAuthProvider} from '@react-oauth/google';
-import {GoogleLogin} from '@react-oauth/google';
 import {AiFillHome, AiOutlineMenu} from 'react-icons/ai';
 import {ImCancelCircle} from 'react-icons/im';
 import Discover from './Discover';
@@ -13,7 +9,6 @@ import Footer from './Footer';
 export default function Sidebar(){
     const [showSidebar, setShowSideBar] = useState(true);
     const normalLink = "flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded";
-    const userProfile = false;
 
     return (
       <>
