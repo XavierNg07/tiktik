@@ -18,7 +18,7 @@ interface IComment{
     comment: string,
     length?: number,
     _key: string,
-    postedBy: {_id: string, _ref: string}
+    postedBy: any
 }
 
 export default function Comments({comment, setComment, addComment, comments, isPosting} : IProps){

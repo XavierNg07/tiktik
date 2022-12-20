@@ -7,7 +7,7 @@ import {IoMdAdd} from 'react-icons/io';
 import Logo from '../utils/tiktik-logo.png';
 import createOrGetUser from '../utils';
 import useAuthStore from '../store/authStore';
-import {BiSearch} from "react-icons/all";
+import {BiSearch} from "react-icons/bi";
 import {useRouter} from "next/router";
 
 export default function Navbar(){

@@ -3,7 +3,7 @@ import {Video} from '../types';
 import Image from 'next/image';
 import Link from 'next/link';
 import {HiVolumeUp, HiVolumeOff} from 'react-icons/hi';
-import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/all';
+import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs';
 import {GoVerified} from 'react-icons/go';
 export default function VideoCard({post} : {post : Video}){
     const [isHover, setIsHover] = useState(false);
