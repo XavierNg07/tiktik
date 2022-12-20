@@ -15,12 +15,14 @@ export default function Home({videos} : {videos : Video[]}) {
 }
 
 export async function getServerSideProps({query : {topic}} : {query : {topic : string}}){
+  console.log("before response");
   let response;
   if (topic){
     response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
   } else {
     response = await axios.get(`${BASE_URL}/api/post`);
   }
+  console.log("after response in /")
   return {
     props: {
       videos: response.data
