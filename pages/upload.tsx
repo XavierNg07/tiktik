@@ -18,7 +18,7 @@ export default function Upload(){
     const router = useRouter();
     async function uploadVideo(e : any){
         const selectedFile = e.target.files[0];
-        const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
+        const fileTypes = ["video/mp4", "video/webm", "video/ogg", "video/quicktime"];
 
         if (fileTypes.includes(selectedFile.type)){
             client.assets.upload("file", selectedFile, {
@@ -59,7 +59,7 @@ export default function Upload(){
                 },
                 topic: category
             }
-            await axios.post(`${BASE_URL}/api`, document);
+            await axios.post(`${BASE_URL}/api/post`, document);
             await router.push('/');
         }
     }
@@ -95,7 +95,7 @@ export default function Upload(){
                                               <p className={"text-xl font-semibold"}>Upload Video</p>
                                           </div>
                                           <p className={"text-gray-400 text-center mt-10 text-sm leading-10"}>
-                                              MP4 or WebM or ogg <br/>
+                                              MP4 or WebM or OGG or MOV <br/>
                                               720x1280 or higher <br/>
                                               Up to 10 minutes <br/>
                                               Less than 2GB
@@ -112,7 +112,7 @@ export default function Upload(){
                           </div>
                       )}
                       {isWrongFileType && (
-                          <p className={"text-center text-xl text-red-400 font-semibold mt-4 w-[250px]"}>Please select a video file</p>
+                          <p className={"text-center text-xl text-red-400 font-semibold mt-4 w-[250px]"}>The file format is not supported</p>
                       )}
                   </div>
               </div>

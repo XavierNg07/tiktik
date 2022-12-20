@@ -5,7 +5,6 @@ import VideoCard from '../components/VideoCard';
 import {BASE_URL} from '../utils';
 
 export default function Home({videos} : {videos : Video[]}) {
-  console.log(videos);
   return (
     <div className="flex flex-col gap-10 videos h-full">
       {videos.length ? (videos.map((video: Video) => (<VideoCard post={video} key={video._id}/>)))
@@ -15,14 +14,12 @@ export default function Home({videos} : {videos : Video[]}) {
 }
 
 export async function getServerSideProps({query : {topic}} : {query : {topic : string}}){
-  console.log("before response");
   let response;
   if (topic){
     response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
   } else {
     response = await axios.get(`${BASE_URL}/api/post`);
   }
-  console.log("after response in /")
   return {
     props: {
       videos: response.data

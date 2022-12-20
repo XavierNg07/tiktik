@@ -4,7 +4,6 @@ import {client} from '../../../utils/client';
 import {topicPostsQuery} from '../../../utils/queries';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse){
-    console.log("in discover/topic");
     if (req.method === 'GET'){
         const {topic} : any = req.query;
         const videosQuery = topicPostsQuery(topic);
