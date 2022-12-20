@@ -9,10 +9,10 @@ import {BASE_URL} from '../../utils';
 
 interface IProps{
     data: {
-        user: IUser,
-        createdPost: Video[],
-        likedPost: Video[]
-    }
+        user: IUser;
+        createdPost: Video[];
+        likedPost: Video[];
+    };
 }
 export default function Profile({data} : IProps){
     const [videos, setVideos] = useState<Video[]>([]);

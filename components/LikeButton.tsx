@@ -3,9 +3,9 @@ import {MdFavorite} from 'react-icons/md';
 import useAuthStore from '../store/authStore';
 
 interface IProps{
-    handleLike: () => void
-    handleDislike: () => void
-    likes : any[]
+    handleLike: () => void;
+    handleDislike: () => void;
+    likes : any[];
 }
 export default function LikeButton({handleLike, handleDislike, likes} : IProps){
     const [alreadyLiked, setAlreadyLiked] = useState(false);

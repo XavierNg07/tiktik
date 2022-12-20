@@ -5,11 +5,11 @@ import {BASE_URL} from '../utils';
 import axios from 'axios';
 
 interface AuthState {
-    userProfile: IUser | null,
-    allUsers: IUser[]
-    addUser: (user : IUser) => void,
-    removeUser: () => void,
-    fetchAllUsers: () => void
+    userProfile: IUser | null;
+    allUsers: IUser[];
+    addUser: (user : IUser) => void;
+    removeUser: () => void;
+    fetchAllUsers: () => void;
 }
 export default create<AuthState>()(
     persist(set => ({
