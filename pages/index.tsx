@@ -14,7 +14,6 @@ export default function Home({videos} : {videos : Video[]}) {
 }
 
 export async function getServerSideProps({query : {topic}} : {query : {topic : string}}){
-  console.log(BASE_URL);
   let response;
   if (topic){
     response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
